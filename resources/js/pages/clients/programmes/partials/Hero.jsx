@@ -3,7 +3,7 @@ import React from 'react';
 const Hero = () => {
     return (
         <>
-            <div className="bg-gradient-to-br from-alpha via-[#6b1d77] to-beta text-light">
+            <div className="bg-black/70 bg-[url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=400&fit=crop')] bg-no-repeat bg-cover bg-blend-darken text-light">
                 <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
                     <div className="text-center space-y-4">
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
