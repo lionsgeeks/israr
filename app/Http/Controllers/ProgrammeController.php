@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Inertia\Inertia;
+
+class ProgrammeController extends Controller
+{
+    //
+    public function index()
+    {
+        return Inertia::render('clients/index');
+    }
+}
