@@ -10,6 +10,6 @@ class ProgrammeController extends Controller
     //
     public function index()
     {
-        return Inertia::render('clients/index');
+        return Inertia::render('clients/programmes/index');
     }
 }
