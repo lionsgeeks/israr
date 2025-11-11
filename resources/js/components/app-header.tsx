@@ -16,13 +16,16 @@ import { BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import logoPurple from '../../../public/assets/images/logo_purple.png';
 import AppearanceToggle from '@/components/appearance-toggle';
-
+import LanguageSwitch from '@/components/language-switch';
+import TransText from "@components/TransText";
+import { useEffect, useState } from 'react';
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
+        title: <TransText ar="الرئيسية" fr="Accueil" en="Home" />,
         href: dashboard(),
         icon: LayoutGrid,
     },
+
 ];
 
 
@@ -35,10 +38,25 @@ interface AppHeaderProps {
 
 export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
     const page = usePage<SharedData>();
+    const readLang = () => {
+        if (typeof window === 'undefined') return 'fr';
+        const saved = window.localStorage.getItem('lang');
+        return saved === 'ar' ? 'ar' : 'fr';
+    };
+    const [isArabic, setIsArabic] = useState(readLang() === 'ar');
+    useEffect(() => {
+        const onChange = () => setIsArabic(readLang() === 'ar');
+        window.addEventListener('language:change', onChange);
+        window.addEventListener('storage', onChange);
+        return () => {
+            window.removeEventListener('language:change', onChange);
+            window.removeEventListener('storage', onChange);
+        };
+    }, []);
     return (
         <>
-            <div className="bg-[var(--color-alpha)] text-[var(--color-light)] dark:bg-[var(--color-alpha)] dark:text-white">
-                <div className="mx-auto flex h-16 items-center px-4 md:max-w-7xl">
+            <div className="bg-[var(--color-alpha)] text-[var(--color-light)] dark:bg-[var(--color-alpha)] dark:text-white" dir={isArabic ? 'rtl' : 'ltr'}>
+                <div className={`mx-auto flex h-16 items-center px-4 md:max-w-7xl`}>
                     {/* Mobile Menu */}
                     <div className="lg:hidden">
                         <Sheet>
@@ -58,7 +76,7 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                                             {mainNavItems.map((item) => (
                                                 <Link key={item.title} href={item.href} className="flex items-center space-x-2 font-medium hover:text-[var(--color-beta)]">
                                                     {item.icon && <Icon iconNode={item.icon} className="h-5 w-5" />}
-                                                    <span>{item.title}</span>
+                                                    <span> {item.title}</span>
                                                 </Link>
                                             ))}
                                         </div>
@@ -89,7 +107,7 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                                             )}
                                         >
                                             {item.icon && <Icon iconNode={item.icon} className="mr-2 h-4 w-4" />}
-                                            {item.title}
+                                            <span> {item.title}</span>
                                         </Link>
                                         {page.url === item.href && (
                                             <div className="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-[var(--color-beta)]"></div>
@@ -100,13 +118,14 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                         </NavigationMenu>
                     </div>
 
-                    <div className="ml-auto flex items-center gap-3">
+                    <div className={`${isArabic ? 'mr-auto' : 'ml-auto'} flex items-center gap-3`}>
+                        <LanguageSwitch />
                         <AppearanceToggle />
                     </div>
                 </div>
             </div>
             {breadcrumbs.length > 1 && (
-                <div className="flex w-full bg-[var(--color-alpha)] text-[var(--color-light)] dark:bg-[var(--color-alpha)] dark:text-white">
+                <div className="flex w-full bg-[var(--color-alpha)] text-[var(--color-light)] dark:bg-[var(--color-alpha)] dark:text-white" dir={isArabic ? 'rtl' : 'ltr'}>
                     <div className="mx-auto flex h-12 w-full items-center justify-start px-4 md:max-w-7xl">
                         <Breadcrumbs breadcrumbs={breadcrumbs} />
                     </div>

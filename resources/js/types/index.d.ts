@@ -16,11 +16,12 @@ export interface NavGroup {
 }
 
 export interface NavItem {
-    title: string;
+    title: string | JSX.Element;
     href: NonNullable<InertiaLinkProps['href']>;
     icon?: LucideIcon | null;
     isActive?: boolean;
 }
+
 
 export interface SharedData {
     name: string;
