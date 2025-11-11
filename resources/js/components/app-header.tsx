@@ -35,8 +35,6 @@ interface AppHeaderProps {
 
 export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
     const page = usePage<SharedData>();
-    const { auth } = page.props;
-    const getInitials = useInitials();
     return (
         <>
             <div className="bg-[var(--color-alpha)] text-[var(--color-light)] dark:bg-[var(--color-alpha)] dark:text-white">
