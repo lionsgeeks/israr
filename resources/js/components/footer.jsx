@@ -1,4 +1,4 @@
-import logo from '../../../public/assets/images/logo_black.png';
+import logo from '../../../public/assets/images/logo_white.png';
 import { Link } from '@inertiajs/react';
 import { useEffect, useState } from 'react';
 import TransText from "@components/TransText";
@@ -19,7 +19,7 @@ export default function Footer() {
         };
     }, []);
     return (
-        <footer className="border-t border-white/10 bg-[var(--color-alpha)] text-[var(--color-light)] dark:bg-[var(--color-alpha)] dark:text-white" dir={isArabic ? 'rtl' : 'ltr'}>
+        <footer className="border-t border-white/10 bg-alpha text-[var(--color-light)] dark:bg-beta dark:text-white" dir={isArabic ? 'rtl' : 'ltr'}>
             <div className={`mx-auto flex w-full max-w-7xl flex-col gap-4 px-4  md:flex-row md:items-center md:justify-between `}>
                 <div className="flex items-center gap-3">
                     <img src={logo} alt="ISRAR" className="h-24 w-auto" />

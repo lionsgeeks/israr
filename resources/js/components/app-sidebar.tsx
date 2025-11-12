@@ -10,7 +10,7 @@ import AppLogo from '../../../public/assets/images/logo_purple.png';
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
-        href: dashboard(),
+        href: "/",
         icon: LayoutGrid,
     },
 ];
@@ -24,7 +24,7 @@ export function AppSidebar() {
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
-                            <Link href={dashboard()} prefetch>
+                            <Link href="/" prefetch>
                                  <img src={AppLogo} alt="ISRAR" className="h-28 w-auto" />
                             </Link>
                         </SidebarMenuButton>

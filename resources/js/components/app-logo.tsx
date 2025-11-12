@@ -1,4 +1,4 @@
-import logo from '../../../public/assets/images/logo_black.png';
+import logo from '../../../public/assets/images/logo_white.png';
 
 export default function AppLogo() {
     return (

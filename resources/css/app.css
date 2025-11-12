@@ -18,6 +18,7 @@
 
     --color-alpha: #4d0458;
     --color-beta: #cd6cff;
+    --color-dark: #171717;
     --color-light: #ffffff;
     --color-error: #f72b2b;
     --color-good: #51b04f;
@@ -109,7 +110,7 @@
     --sidebar-ring: oklch(0.87 0 0);
 }
 
-.dark {
+/* .dark {
     --background: oklch(0.145 0 0);
     --foreground: oklch(0.985 0 0);
     --card: oklch(0.145 0 0);
@@ -142,7 +143,7 @@
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(0.269 0 0);
     --sidebar-ring: oklch(0.439 0 0);
-}
+} */
 
 @layer base {
     * {
@@ -153,3 +154,12 @@
         @apply bg-background text-foreground font-sans;
     }
 }
+
+/* Background helper class for welcome page */
+/* .bg-url {
+    background-image: url('/assets/images/backgorund.png');
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: top left;
+    min-height: 100vh;
+} */

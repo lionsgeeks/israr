@@ -15,18 +15,17 @@ import { Link, usePage } from '@inertiajs/react';
 import { AlignVerticalJustifyStartIcon, BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import logoPurple from '../../../public/assets/images/logo_purple.png';
-import AppearanceToggle from '@/components/appearance-toggle';
 import LanguageSwitch from '@/components/language-switch';
 import TransText from "@components/TransText";
 import { useEffect, useState } from 'react';
 const mainNavItems: NavItem[] = [
     {
         title: <TransText ar="الرئيسية" fr="Accueil" en="Home" />,
-        href: dashboard(),
+        href: "/",
         icon: LayoutGrid,
     },
     {
-        title: 'Programmes',
+        title: <TransText ar="الرئيسية" fr="Accueil" en="Home" />,
         href: '/programmes',
         icon: null,
     },
@@ -60,7 +59,7 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
     }, []);
     return (
         <>
-            <div className="bg-[var(--color-alpha)] text-[var(--color-light)] dark:bg-[var(--color-alpha)] dark:text-white" dir={isArabic ? 'rtl' : 'ltr'}>
+            <div className="bg-alpha text-[var(--color-light)] dark:bg-beta dark:text-white">
                 <div className={`mx-auto flex h-16 items-center px-4 md:max-w-7xl`}>
                     {/* Mobile Menu */}
                     <div className="lg:hidden">
@@ -93,7 +92,7 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                         </Sheet>
                     </div>
 
-                    <Link href={dashboard()} prefetch className="flex items-center space-x-2">
+                    <Link href="/" prefetch className="flex items-center space-x-2">
                         <AppLogo />
                     </Link>
 
@@ -125,7 +124,6 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
 
                     <div className={`${isArabic ? 'mr-auto' : 'ml-auto'} flex items-center gap-3`}>
                         <LanguageSwitch />
-                        <AppearanceToggle />
                     </div>
                 </div>
             </div>
