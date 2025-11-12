@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 interface TextProps {
   ar: string;
@@ -11,13 +11,13 @@ interface TextProps {
 const TransText: React.FC<TextProps> = (props) => {
   const allowedLanguages = ["ar", "fr", "en", "sw", "pr"] as const;
 
-  const readLang = (): "ar" | "fr" | "en" | "sw" | "pr" => {
+  const readLang = useCallback((): "ar" | "fr" | "en" | "sw" | "pr" => {
     if (typeof window === "undefined") return "en";
     const saved = window.localStorage.getItem("lang") || "en";
     return (allowedLanguages as readonly string[]).includes(saved)
       ? (saved as "ar" | "fr" | "en" | "sw" | "pr")
       : "en";
-  };
+  }, []);
 
   const [selectedLanguage, setSelectedLanguage] = useState<"ar" | "fr" | "en" | "sw" | "pr">(readLang());
 
